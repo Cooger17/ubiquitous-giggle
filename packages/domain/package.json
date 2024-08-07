@@ -1,0 +1,13 @@
+{
+	"name": "@fnshop/domain",
+	"version": "0.1.0",
+	"type": "module",
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"private": false,
+	"files": ["./dist/**"],
+	"scripts": {
+		"build": "turbo run build",
+		"dev": "turbo run dev"
+	}
+}
