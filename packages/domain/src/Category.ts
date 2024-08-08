@@ -8,7 +8,7 @@ export const Category = z.object({
 export type Category = Readonly<z.infer<typeof Category>>;
 
 export const CategorySchema = z.object({
-	id: z.string(),
+	id: z.number(),
 	name: z.string().min(3, "Must contains at least 3 characters"),
 	createdAt: z.date(),
 	updatedAt: z.date(),
