@@ -1,5 +1,5 @@
-import type { Product } from "../models/products/Product";
-import type { ProductRepository } from "../repositories/ProductRepository";
+import type { Product } from "../../models/products/Product";
+import type { ProductRepository } from "../../repositories/products/ProductRepository";
 
 /**
  * Retrieves all products from the product repository.
