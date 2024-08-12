@@ -1,13 +1,22 @@
 import { z } from "zod";
 
-export const ProductSchema = z.object({
-	id: z.number(),
+const ProductSchema = z.object({
+	productId: z.number(),
 	name: z.string(),
 	description: z.string(),
 	price: z.number(),
 	image: z.string(),
-	category: z.string(),
-	rating: z.number().optional(),
+	category: z.number(),
+	createdAt: z.date(),
+	updatedAt: z.date(),
 });
 
-export type Product = z.infer<typeof ProductSchema>;
+const CreateProductCommand = z.object({
+	id: z.number(),
+	name: z.string(),
+	price: z.number(),
+	description: z.string().optional(),
+});
+
+export type Product = Readonly<z.infer<typeof ProductSchema>>;
+export type CreateProductCommand = z.infer<typeof CreateProductCommand>;
