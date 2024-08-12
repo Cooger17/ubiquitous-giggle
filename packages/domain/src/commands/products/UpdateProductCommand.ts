@@ -1,4 +1,4 @@
-export type updateProductCommand = {
+export type UpdateProductCommand = {
 	productId: number;
 	name: string;
 	price: number;
