@@ -1,13 +1,13 @@
 import type { Category } from "../../domain/src/Category";
 
 export type CategoryRepository = {
-	createcategory: (category: Category) => Promise<void>;
+	createCategory: (category: Category) => Promise<void>;
 
-	CategoriesFindById(category_id: string): Promise<Category | null>;
+	CategoriesFindById(Category_id: string): Promise<Category | null>;
 
 	update: (category: Category) => Promise<void>;
 
-	delete: (category_id: string) => Promise<void>;
+	delete: (Category_id: string) => Promise<void>;
 
 	list: (page?: number, pageSize?: number) => Promise<Category[]>;
 };

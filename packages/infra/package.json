@@ -7,7 +7,17 @@
 	"private": false,
 	"files": ["./dist/**"],
 	"scripts": {
-		"build": "turbo run build",
-		"dev": "turbo run dev"
+		"build": "tsup"
+	},
+	"devDependencies": {
+		"@types/node": "20.14.12",
+		"@fnshop/tsconfig": "workspace:^",
+		"tsup": "8.2.3",
+		"typescript": "5.5.4"
+	},
+	"dependencies": {
+		"zod": "3.23.8",
+		"@fnshop/domain": "workspace:^",
+		"@fnshop/application": "workspace:^"
 	}
 }
