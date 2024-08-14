@@ -10,6 +10,7 @@ export const createInMemoryCategoryRepository = (): CategoryRepository => {
 				throw new Error("Category with this ID already exists.");
 			}
 			categories.set(category.Category_id, category);
+			console.log(`Category with id ${category.Category_id} created`);
 		},
 
 		async delete(category_id: string): Promise<void> {

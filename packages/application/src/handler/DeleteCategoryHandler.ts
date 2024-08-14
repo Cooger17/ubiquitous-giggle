@@ -1,6 +1,6 @@
+import type { CategoryRepository } from "../CategoryRepository";
 import type { DeleteCategoryCommand } from "../commands/DeleteCategoryCommand";
 import type { DeleteCategoryCommandHandler } from "../commands/DeleteCategoryCommandHandler";
-import type { CategoryRepository } from "../src/CategoryRepository";
 
 export const DeleteCategoryHandler = (context: {
 	category_repository: CategoryRepository;

@@ -1,9 +1,13 @@
-import { Category } from "../../domain/src/Category";
+import { Category } from "@fnshop/domain/src/Category";
 import type { CreateCategoryCommand } from "../commands/CreateCategoryCommand";
-import type { CreateCategoryCommandHandler } from "../commands/CreateCategoryCommandHandler";
-import type { CategoryRepository } from "../src/CategoryRepository";
 
-export const CreateCategoryHandler = (context: {
+import type { CategoryRepository } from "../CategoryRepository";
+
+export type CreateCategoryCommandHandler = {
+	execute: (command: CreateCategoryCommand) => Promise<void>;
+};
+
+export const createCreateCategoryCommandHandler = (context: {
 	category_repository: CategoryRepository;
 }): CreateCategoryCommandHandler => {
 	const { category_repository } = context;
