@@ -21,7 +21,7 @@ export const createCreateProductCommandHandler = (context: {
 			}
 
 			const product: Product = {
-				productId: command.id,
+				productId: command.productId,
 				name: command.name,
 				description: command.description || "",
 				price: command.price,
@@ -33,6 +33,7 @@ export const createCreateProductCommandHandler = (context: {
 
 			try {
 				await product_repository.createProduct(product);
+				return product;
 			} catch (error) {
 				throw new Error(
 					`createCreateProductCommandHandler: Failed to create product: ${error}`,

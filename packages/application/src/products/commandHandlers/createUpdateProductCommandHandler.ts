@@ -21,7 +21,7 @@ export const createUpdateProductCommandHandler = (context: {
 			}
 
 			const product: Product = {
-				productId: command.id,
+				productId: command.productId,
 				name: command.name,
 				description: command.description || "",
 				price: command.price,

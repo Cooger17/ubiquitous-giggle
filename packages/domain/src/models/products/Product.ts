@@ -12,7 +12,7 @@ const ProductSchema = z.object({
 });
 
 const CreateProductCommand = z.object({
-	id: z.number(),
+	productId: z.number(),
 	name: z.string(),
 	price: z.number(),
 	description: z.string().optional(),
@@ -23,7 +23,7 @@ const CreateProductCommand = z.object({
 });
 
 const UpdateProductCommand = z.object({
-	id: z.number(),
+	productId: z.number(),
 	name: z.string(),
 	price: z.number(),
 	description: z.string().optional(),
@@ -34,7 +34,7 @@ const UpdateProductCommand = z.object({
 });
 
 const DeleteProductCommand = z.object({
-	id: z.number(),
+	productId: z.number(),
 });
 
 export type Product = Readonly<z.infer<typeof ProductSchema>>;

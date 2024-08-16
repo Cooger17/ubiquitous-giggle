@@ -21,7 +21,7 @@ export const createDeleteProductCommandHandler = (context: {
 			}
 
 			try {
-				await product_repository.deleteProduct(command.id);
+				await product_repository.deleteProduct(command.productId);
 			} catch (error) {
 				throw new Error(
 					`createDeleteProductCommandHandler: Failed to delete product: ${error}`,
