@@ -1,7 +1,7 @@
 import type { ProductRepository } from "@fnshop/application";
 import type { Product } from "@fnshop/domain";
 
-const createRestApiProductRepository = async (context: {
+export const createRestApiProductRepository = async (context: {
 	api_base_url: string;
 }): Promise<ProductRepository> => {
 	const { api_base_url } = context;

@@ -1,7 +1,7 @@
 import type { ProductRepository } from "@fnshop/application";
 import type { Product } from "@fnshop/domain";
 
-const createInMemoryProductRepository = (): ProductRepository => {
+export const createInMemoryProductRepository = (): ProductRepository => {
 	const products: Map<number, Product> = new Map();
 	const repository: ProductRepository = {
 		createProduct: async (product: Product): Promise<void> => {
@@ -13,10 +13,10 @@ const createInMemoryProductRepository = (): ProductRepository => {
 			console.log(`Product with id ${product.productId} created`);
 		},
 		getProductById: async (productId: number): Promise<Product | null> => {
-			if (!products.has(productId)) {
-				throw new Error(`Product with id ${productId} not found`);
-			}
-			return products.get(productId) || null;
+			// if (!products.has(productId)) {
+			// 	throw new Error(`Product with id ${productId} not found`);
+			// }
+			return products.get(productId) ?? null;
 		},
 		updateProduct: async (product: Product): Promise<void> => {
 			if (!products.has(product.productId)) {
