@@ -1,6 +1,10 @@
 import type { Category } from "../../domain/src/Category";
 
 export type CategoryRepository = {
+	CategoriesSet(
+		Category_id: string,
+		existingCategory: { Category_id: string; name: string },
+	): unknown;
 	createCategory: (category: Category) => Promise<void>;
 
 	CategoriesFindById(Category_id: string): Promise<Category | null>;
