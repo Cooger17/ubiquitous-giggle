@@ -1,9 +1,14 @@
-import type { CategoryRepository } from "packages/application/src/CategoryRepository";
-import { DeleteCategoryHandler } from "packages/application/src/commands/DeleteCategoryCommandHandler";
-import { createUpdateCategoryCommandHandler } from "packages/application/src/commands/UpdateCategoryCommandHandler";
-import type { Category } from "packages/domain/src/Category";
+// import type { CategoryRepository } from "packages/application/src/CategoryRepository";
+// import { DeleteCategoryHandler } from "packages/application/src/commands/DeleteCategoryCommandHandler";
+// import { createUpdateCategoryCommandHandler } from "packages/application/src/commands/UpdateCategoryCommandHandler";
+// import type { Category } from "packages/domain/src/Category";
 import { useState } from "react";
+// import { createCreateCategoryCommandHandler } from "../../src/commands/CreateCategoryCommandHandler";
+
+import type { Category } from "@fnshop/domain";
 import { createCreateCategoryCommandHandler } from "../../src/commands/CreateCategoryCommandHandler";
+import { DeleteCategoryHandler } from "../../src/commands/DeleteCategoryCommandHandler";
+import { createUpdateCategoryCommandHandler } from "../../src/commands/UpdateCategoryCommandHandler";
 
 // ViewModel pour gérer les catégories
 // export const useCategoryViewModel = (
@@ -51,56 +56,86 @@ export const useCategoryViewModel = (
 
 	// Méthode pour créer une nouvelle catégorie
 	const createCategory = async (command: Category) => {
+		// Crée un gestionnaire de commandes pour la création de catégories
 		const command_handler = createCreateCategoryCommandHandler({
 			category_repository,
 		});
 
 		try {
+			// Exécute la commande de création de catégorie
 			await command_handler.execute(command);
+			// Récupère la liste mise à jour des catégories après la création
 			const updatedCategories = await category_repository.list();
-			setCategories(updatedCategories);
-		} catch (err) {
-			setError(err.message);
+			setCategories(updatedCategories); // Met à jour l'état avec les catégories mises à jour
+		} catch (err: unknown) {
+			// Gestion des erreurs
+			if (err instanceof Error) {
+				setError(err.message); // Définit l'erreur dans l'état si elle est une instance de Error
+			} else {
+				setError("Une erreur inconnue est survenue."); // Erreur générique pour les autres cas
+			}
 		}
 	};
 
 	// Méthode pour récupérer une catégorie par ID
 	const getCategoryById = async (id: string) => {
 		try {
+			// Récupère la catégorie par ID depuis le dépôt
 			const fetchedCategory = await category_repository.CategoriesFindById(id);
-			setCategory(fetchedCategory);
-		} catch (err) {
-			setError(err.message);
+			setCategory(fetchedCategory); // Met à jour l'état avec la catégorie récupérée
+		} catch (err: unknown) {
+			// Gestion des erreurs
+			if (err instanceof Error) {
+				setError(err.message); // Définit l'erreur dans l'état si elle est une instance de Error
+			} else {
+				setError("Une erreur inconnue est survenue."); // Erreur générique pour les autres cas
+			}
 		}
 	};
 
 	// Méthode pour mettre à jour une catégorie existante
 	const updateCategory = async (command: Category) => {
+		// Crée un gestionnaire de commandes pour la mise à jour de catégories
 		const command_handler = createUpdateCategoryCommandHandler({
 			category_repository,
 		});
 
 		try {
+			// Exécute la commande de mise à jour de catégorie
 			await command_handler.execute(command);
+			// Récupère la liste mise à jour des catégories après la mise à jour
 			const updatedCategories = await category_repository.list();
-			setCategories(updatedCategories);
-		} catch (err) {
-			setError(err.message);
+			setCategories(updatedCategories); // Met à jour l'état avec les catégories mises à jour
+		} catch (err: unknown) {
+			// Gestion des erreurs
+			if (err instanceof Error) {
+				setError(err.message); // Définit l'erreur dans l'état si elle est une instance de Error
+			} else {
+				setError("Une erreur inconnue est survenue."); // Erreur générique pour les autres cas
+			}
 		}
 	};
 
 	// Méthode pour supprimer une catégorie par ID
 	const deleteCategory = async (id: string) => {
+		// Crée un gestionnaire de commandes pour la suppression de catégories
 		const command_handler = DeleteCategoryHandler({
 			category_repository,
 		});
 
 		try {
+			// Exécute la commande de suppression de catégorie
 			await command_handler.execute({ Category_id: id });
+			// Récupère la liste mise à jour des catégories après la suppression
 			const updatedCategories = await category_repository.list();
-			setCategories(updatedCategories);
-		} catch (err) {
-			setError(err.message);
+			setCategories(updatedCategories); // Met à jour l'état avec les catégories mises à jour
+		} catch (err: unknown) {
+			// Gestion des erreurs
+			if (err instanceof Error) {
+				setError(err.message); // Définit l'erreur dans l'état si elle est une instance de Error
+			} else {
+				setError("Une erreur inconnue est survenue."); // Erreur générique pour les autres cas
+			}
 		}
 	};
 

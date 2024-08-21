@@ -21,7 +21,7 @@ describe("Category", () => {
 			});
 
 			const command: Category = {
-				Category_id: "1",
+				category_id: 1,
 				name: "test",
 			};
 
@@ -33,7 +33,7 @@ describe("Category", () => {
 			//exepct(true).toBe(true)
 
 			expect(category).not.toBeUndefined();
-			expect(category?.Category_id).toBe(command.Category_id);
+			expect(category?.category_id).toBe(command.category_id);
 		});
 	});
 });
@@ -50,25 +50,25 @@ describe("deleteCategory", () => {
 		});
 
 		const create_command: CreateCategoryCommand = {
-			Category_id: "1",
+			category_id: 1,
 			name: "test delete",
 		};
 
 		await create_command_handler.execute(create_command);
 
-		const create_category = await category_repository.CategoriesFindById("1");
+		const create_category = await category_repository.CategoriesFindById(1);
 
 		console.log(create_category);
 
 		// ACT
 
 		const delete_command: DeleteCategoryCommand = {
-			Category_id: "1",
+			category_id: 1,
 		};
 
 		await delete_command_handler.execute(delete_command);
 
-		const delete_category = await category_repository.CategoriesFindById("1");
+		const delete_category = await category_repository.CategoriesFindById(1);
 
 		// ASSERT
 		expect(delete_category).not.toBeUndefined();
@@ -88,31 +88,31 @@ describe("UpdateCategoryCommandHandler", () => {
 		});
 
 		const create_command: CreateCategoryCommand = {
-			Category_id: "1",
+			category_id: 1,
 			name: "Initial Category Name",
 		};
 
 		await create_command_handler.execute(create_command);
 
-		const created_category = await category_repository.CategoriesFindById("1");
+		const created_category = await category_repository.CategoriesFindById(1);
 		console.log("Created Category:", created_category);
 
 		// ACT
 		const update_command: UpdateCategoryCommand = {
-			Category_id: "1",
+			category_id: 1,
 			name: "Updated Category Name",
 		};
 
 		await update_command_handler.execute(update_command);
 
-		const updated_category = await category_repository.CategoriesFindById("1");
+		const updated_category = await category_repository.CategoriesFindById(1);
 
 		// ASSERT
 		expect(updated_category).toBeDefined();
 		expect(updated_category?.name).toBe("Updated Category Name");
 	});
 
-	it("should throw an error if Category_id or name is missing", async () => {
+	it("should throw an error if category_id or name is missing", async () => {
 		// ARRANGE
 		const category_repository = createInMemoryCategoryRepository();
 		const update_command_handler = createUpdateCategoryCommandHandler({
@@ -120,14 +120,14 @@ describe("UpdateCategoryCommandHandler", () => {
 		});
 
 		const invalid_command: UpdateCategoryCommand = {
-			Category_id: "",
+			category_id: 0,
 			name: "",
 		};
 
 		// ACT & ASSERT
 		await expect(
 			update_command_handler.execute(invalid_command),
-		).rejects.toThrow("Category_id and name are required.");
+		).rejects.toThrow("category_id and name are required.");
 	});
 });
 
@@ -141,11 +141,11 @@ describe("CategoryRepository", () => {
 
 		// Create several categories
 		const categoriesToCreate: CreateCategoryCommand[] = [
-			{ Category_id: "1", name: "Category 1" },
-			{ Category_id: "2", name: "Category 2" },
-			{ Category_id: "3", name: "Category 3" },
-			{ Category_id: "4", name: "Category 4" },
-			{ Category_id: "5", name: "Category 5" },
+			{ category_id: 1, name: "Category 1" },
+			{ category_id: 2, name: "Category 2" },
+			{ category_id: 3, name: "Category 3" },
+			{ category_id: 4, name: "Category 4" },
+			{ category_id: 5, name: "Category 5" },
 		];
 
 		for (const command of categoriesToCreate) {

@@ -14,11 +14,11 @@ export const createCreateCategoryCommandHandler = (context: {
 
 	const command_handler: CreateCategoryCommandHandler = {
 		execute: async (command: CreateCategoryCommand) => {
-			if (!command.Category_id || !command.name) {
+			if (!command.category_id || !command.name) {
 				throw new Error("Category_id and name are required.");
 			}
 			const category = {
-				Category_id: command.Category_id,
+				category_id: command.category_id,
 				name: command.name,
 			};
 

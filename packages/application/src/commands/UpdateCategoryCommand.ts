@@ -1,4 +1,4 @@
 export type UpdateCategoryCommand = {
-	Category_id: string;
+	category_id: number;
 	name: string;
 };

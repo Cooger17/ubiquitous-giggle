@@ -13,7 +13,7 @@ export const DeleteCategoryHandler = (context: {
 
 	const command_handler: DeleteCategoryCommandHandler = {
 		execute: async (command: DeleteCategoryCommand) => {
-			await category_repository.delete(command.Category_id);
+			await category_repository.delete(command.category_id);
 		},
 	};
 

@@ -1,3 +1,3 @@
 export type GetCategoryByIdQuery = {
-	id: string;
+	id: number;
 };

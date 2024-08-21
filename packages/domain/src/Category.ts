@@ -1,7 +1,7 @@
 import { number, z } from "zod";
 
 export const Category = z.object({
-	Category_id: z.string(),
+	category_id: z.number(),
 	name: z.string().min(3, "Must contains at least 3 characters"),
 });
 
